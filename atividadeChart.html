@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Implementando ChartJS</title>
+    <style>
+        
+        .container_graficos{
+            display: flex;
+            height: 100%;
+            padding: 1vw;
+        }
+        .barra{
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            margin-right: 2vw;
+            
+        }
+        .linha{
+            width: 50%;
+            height: 100%;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container_graficos">
+      <div class="linha" >
+        <canvas id="chart_linha"></canvas>
+      </div>
+      <div class="barra">
+        <canvas  id="chart_barra"></canvas>
+      </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    const barra = document.getElementById('chart_barra');
+    const linha = document.getElementById('chart_linha');
+  
+    new Chart(barra, {
+      type: 'bar',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+        datasets: [{
+          
+          label: 'Umidade Média',
+          data: [90, 89, 93, 87, 88, 82],
+          backgroundColor: '#1D84B5',
+          borderWidth: 2
+        },{
+            label: 'Temperatura Média',
+          data: [22, 24, 27, 23, 20, 18],
+          backgroundColor: '#E5446D',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    new Chart(linha, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+          
+          label: 'Temperatura',
+          data: [30, 29, 28, 25, 22, 23],
+          borderColor: '#E5446D',
+          backgroundColor: '#E5446D',
+          borderWidth: 2
+        },{
+            label: 'Umidade',
+          data: [80, 82, 80, 85, 80, 83],
+          borderColor: '#1D84B5',
+          backgroundColor: '#1D84B5',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+    
